@@ -63,47 +63,61 @@
     <section class="section-projetos">
       <div class="container">
         <div class="container-projetos">
-          <h3>Meus projetos!</h3>
+          <h3>Veja abaixo alguns dos meus projetos!</h3>
         </div>
 
-        <!-- CARDS -->
-        <div style="display: flex;" >
-          <!-- Cards -->
-          <div class="card" style="width: 20rem; height: 28rem; margin-right:2px">
-            <img class="card-img-top" src="../images/Tableau-ecommerce.png" alt="Tableau-project">
-            <div class="card-body">
-              <h5 class="card-title">E-Commerce</h5>
-              <p class="card-text">Um projeto de E-Commerce fictício elaborado atrávez de uma base disponibilizada pelo Kaggle.</p>
-              <p class="card-text-bold">#Tableau #SQL</p>
-              <a href="#" class="btn btn-primary">Verificar</a>
+        <div class="container">
+
+          <div class="row">
+            <div class="col-6 mb-3" style="padding:0px!important;">
+              <input type="text" id="filtroCards" class="form-control" onkeyup="aplicaFiltroCards()" placeholder="Filtro...">
+            </div>
+
+          </div>
+          <div id="containerCards">
+            <div class="row">
+              <div class="card-deck">
+                <div class="card" style="max-width: 350px;">
+                  <a href="./Projetos/eccomerce.html">
+                    <img class="card-img" src="../images/Tableau-ecommerce.png" alt="Tableau-project">
+
+                    <div class="card-body">
+                      <h5 class="card-title">E-Commerce</h5>
+                      <p class="card-text">Um projeto de E-Commerce fictício elaborado atrávez de uma base disponibilizada pelo Kaggle.</p>
+                      <p class="card-text"><small class="text-muted">#Tableau #Sql</small></p>
+                      <a href="./Projetos/eccomerce.html" class="btn btn-primary">Verificar</a>
+                    </div>
+                </div>
+                </a>
+
+
+                <!-- <div class="card">
+                  <a href="#">
+                    <div class="card-body">
+                      <h5 class="card-title">Exemplo 2</h5>
+                      <p class="card-text">ABACAXI</p>
+                      <p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+                    </div>
+                </div>
+                </a>
+
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Exemplo 3</h5>
+                    <p class="card-text">MELANCIA</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div> -->
+
+
+              </div>
             </div>
           </div>
-
-          <!-- Card 2 -->
-          <div class="card" style="width: 20rem; height: 28rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-
-          <!-- card 3 -->
-          <!-- <div class="card" style="width: 20rem; height: 28rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div> -->
-
         </div>
+
+
         <div style="padding: 20px;"></div>
     </section>
-
 
     <footer>
       <div class="row justify-content-around mb-0 pt-5 pb-0 ">
@@ -127,9 +141,9 @@
             <div class="col-md-3 col-12 my-sm-0 mt-5">
               <ul class="list-unstyled">
                 <li class=""><span>Navegação</span></li>
-                <li><a href="./Pages/portfolio.html" class="nav-link">Portfolio</a></li>
-                <li><a href="./Pages/sobre.html" class="nav-link">Sobre</a></li>
-                <li><a href="./Pages/contato.html" class="nav-link">Contato</a></li>
+                <li><a href="../Pages/portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="../Pages/sobre.html" class="nav-link">Sobre</a></li>
+                <li><a href="../Pages/contato.html" class="nav-link">Contato</a></li>
               </ul>
             </div>
           </div>

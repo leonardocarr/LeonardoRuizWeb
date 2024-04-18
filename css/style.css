@@ -213,11 +213,8 @@ footer {
   background-color: rgba(212, 230, 251, 0.1);
 }
 
-
-
-
 /* CARDS */
-.card-img{
+.card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -245,11 +242,6 @@ footer {
   color: #3c3b3b;
 }
 
-
-
-
-
-
 .titulo-principal {
   text-align: left;
   font-family: 'Courier New', Courier, monospace;
@@ -262,6 +254,24 @@ footer {
   opacity: 1;
   animation: pisca .8s infinite;
 }
+
+
+.tableauDiv {
+  margin: 0 auto;
+  display: flex;
+  padding: 40px;
+}
+
+.tableauPlaceholder {
+  /* display: block;
+  height: 200px; */
+}
+
+
+
+
+
+
 
 /* Animação aplicada ao content referente a classe *.titulo-principal* resultando num efeito de cursor piscando. */
 @keyframes pisca {
