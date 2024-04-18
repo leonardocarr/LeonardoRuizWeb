@@ -90,7 +90,6 @@ a:hover {
   border-bottom: 1px solid #4b4848;
 }
 
-
 .site-navbar .site-navigation .site-menu a {
   text-decoration: none !important;
   display: inline-block;
@@ -111,16 +110,7 @@ a:hover {
   position: relative;
 }
 
-.site-navbar .site-navigation .site-menu>li>a:hover {
-  color: #222020 !important;
-  animation: ease 1s;
-}
-
 /* HOVER EFFECT */
-nav.stroke ul li a,
-nav.fill ul li a {
-  position: relative;
-}
 
 nav.stroke ul li a:after,
 nav.fill ul li a:after {
@@ -198,12 +188,6 @@ nav.fill ul li a:after {
   margin-bottom: 20px;
 }
 
-
-.div-footer {
-  /* display: flex; */
-}
-
-
 .img-fluid {
   vertical-align: middle !important;
   width: 100%;
@@ -233,6 +217,12 @@ footer {
 
 
 /* CARDS */
+.card-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 .card-img-top {
   width: auto;
