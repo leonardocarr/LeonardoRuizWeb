@@ -4,7 +4,7 @@ html {
 
 body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background-color: black;
+  background-color: #fafcff;
   position: relative;
 }
 
@@ -262,6 +262,13 @@ footer {
   padding: 40px;
 }
 
+.tableauPlaceholder {
+  /* display: block;
+  height: 200px; */
+}
+
+
+
 
 
 
@@ -272,7 +279,6 @@ footer {
   0%,
   100% {
     opacity: 1;
-    
   }
 
   50% {
