@@ -18,6 +18,24 @@ p {
   font-weight: 300;
 }
 
+.card-body p {
+  color: rgb(90, 88, 88);
+  font-family: Outfit;
+  text-align: justify;
+}
+
+.card-body h2,
+.card-body h3 {
+  color: rgb(63, 61, 61);
+  font-family: Outfit;
+  text-align: justify;
+}
+
+.h3-home{
+  font-family: "Gloria Hallelujah", sans-serif;
+  padding: 20px;
+}
+
 h1,
 h2,
 h3,
@@ -181,11 +199,33 @@ nav.fill ul li a:after {
 
 }
 
-.container-projetos h3 {
-  font-family: gloria hallelujah;
-  color: #3c3b3b;
-  padding: 20px;
+.container-projetos p{
+  margin-top: 20px;
   margin-bottom: 20px;
+  color: rgba(90, 88, 88, 0.846);
+  font-family: Outfit;
+  font-size: 1.2rem;
+}
+.container-projetos p:last-child {
+  margin-top: 20px;
+  margin-bottom: 60px;
+  font-family: Outfit;
+  font-size: 1.2rem;
+  color: rgb(82, 82, 229);
+}
+
+.container-projetos h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif hallelujah;
+
+  color: #3c3b3bdc;
+  padding: 20px 20px 20px 0px;
+  margin-bottom: 20px;
+}
+
+.container-projetos h4 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif hallelujah;
+  color: #3c3b3bdc;
+  padding: 20px 20px 20px 0px;
 }
 
 .img-fluid {
@@ -259,7 +299,7 @@ footer {
 .tableauDiv {
   margin: 0 auto;
   display: flex;
-  padding: 40px;
+  padding: 0 40px 40px 40px;
 }
 
 .tableauPlaceholder {
@@ -268,10 +308,23 @@ footer {
 }
 
 
+.about-me {
+  display: inline;
+  text-align: right;
+  align-content: center;
+  color: rgba(64, 62, 62, 0.93);
+}
 
+.about-me p{
+  margin-top: 20px;
+  color: rgba(90, 88, 88, 0.846);
+  font-family: Outfit;
+  font-size: 1.1rem;
+}
 
-
-
+.container-icons{
+  margin-bottom: 200px;
+}
 
 /* Animação aplicada ao content referente a classe *.titulo-principal* resultando num efeito de cursor piscando. */
 @keyframes pisca {
