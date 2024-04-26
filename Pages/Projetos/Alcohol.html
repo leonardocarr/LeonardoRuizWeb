@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Gloria Hallehujah font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+  <!-- icones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <title>Léo Ruiz</title>
+</head>
+
+<body>
+
+  <header class="site-navbar site-navbar-target" role="banner">
+
+    <div class="container">
+      <div class="row align-items-center position-relative">
+
+        <div class="col-3">
+          <div class="site-logo">
+            <!-- Logo -->
+            <a href="../../index.html"><span><img class="image-fluid" src="../../images/Leo-Ruiz.png" alt="Leo Ruiz"></span></a>
+          </div>
+        </div>
+
+        <div class="col-9  text-right">
+
+          <nav class="site-navigation text-right ml-auto d-none d-lg-block stroke" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav ml-auto ">
+              <li><a href="../../index.html" class="nav-link">Home</a></li>
+              <li><a href="../../Pages/portfolio.html" class="nav-link">Portfólio</a></li>
+              <li><a href="../../Pages/sobre.html" class="nav-link">Sobre</a></li>
+              <li><a href="../../Pages/contato.html" class="nav-link">Contato</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Projeto -->
+    <section>
+      <div class="container">
+        <div class="col-12">
+          <div class="container-projetos">
+            <h4>Impacto da bebida nos estudantes.</h4>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Documentação
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body m-3">
+
+                <h2>Documentação do Processo de Elaboração</h2>
+
+                <p>O conjunto de dados foi extraído do <a href="https://www.kaggle.com/datasets/joshuanaude/effects-of-alcohol-on-student-performance">Kaggle</a>. O objetivo desta documentação é demonstrar o processo e os resultados obtidos.</p>
+                
+                <h3>Visão Geral</h3>
+                <p>O processo ETL é composto por várias etapas, cada uma das quais é descrita abaixo:</p>
+                
+                <h3>Extração (Extract)</h3>
+                <p>Nesta etapa, os dados foram extraídos do banco de dados do site do Kaggle e importados para o Microsoft SQL Server.</p>
+                
+                <h3>Transformação (Transform)</h3>
+                <p>Nesta etapa, os dados extraídos são processados e transformados.</p>
+                
+                <p>A primeira etapa foi alterar o nome das colunas para um padrão que facilitasse a manipulação dos dados. Assim, no item (01), os nomes das colunas foram alterados.</p>
+                
+                <p>A segunda etapa (2.0) foi buscar inconsistências nos dados para limpeza e pré-processamento.</p>
+                
+                <p>Em seguida, as colunas de carimbo de data/hora foram separadas em novas colunas de data e hora, e o horário AM/PM foi convertido para o formato de 24 horas.</p>
+                
+                <p>No item (0.3), foram realizadas breves verificações para entender alguns dados faltantes e compreender os tipos de dados.</p>
+                
+                <p>Continuando, foram convertidas as colunas que continham dados de média e eram do tipo string para o tipo float.</p>
+                
+                <h3>Carga (Load)</h3>
+                <p>Por fim, os dados transformados são carregados de volta ao banco de dados, substituindo ou atualizando as informações existentes. Aqui, os dados estão prontos para serem consumidos no Tableau.</p>
+                
+
+
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Código SQL
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <!-- SQL -->
+                <pre>
+                  use AlcoholOnStudents
+
+-- Verificando as colunas
+SELECT TOP (100)*
+FROM [AlcoholOnStudents].[dbo].[Stats_survey]
+
+
+EXEC sp_columns 'Stats_survey';
+
+-- 0.1 Renomeando as Colunas para facilitar as próximas etapas
+
+EXEC sp_rename 'Stats_survey.[Timestamp]', 'Data_Registro', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[Your Sex?]', 'Sexo', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[Your Matric (grade 12) Average  GPA (in %)]', 'Media_Atual', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[What year were you in last year (2023) ?]', 'Ano_Anterior', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[What Faculdade_Categoria does your degree fall under?]', 'Faculdade_Categoria', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[Your 2023 academic year average GPA in % (Ignore if you are 2024 1st year student)]', 'Media_2023', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[Your Accommodation Status Last Year (2023)]', 'Status_Alojamento_2023', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[Monthly Allowance in 2023]', 'Subsidio_2023', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[Were you on scholarship bursary in 2023?]', 'Bolsa_Estudo_2023', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[Additional amount of studying (in hrs) per week]', 'Horas_Estudo_Adicionais', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[How often do you go out partying socialising during the week?]', 'Frequencia_Festa', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[On a night out, how many alcoholic drinks do you consume?]', 'Consumo_Alcool', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[How many classes do you miss per week due to alcohol reasons, (i e  being hungover or too tired?)]', 'Aulas_Faltas_Alcool', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[How many modules have you failed thus far into your studies?]', 'Modulos_Reprovados', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[Are you currently in a romantic relationship?]', 'Relacionamento_Romantico', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[Do your parents approve alcohol consumption?]', 'Aprovacao_Pais_Alcool', 'COLUMN';
+EXEC sp_rename 'Stats_survey.[How strong is your relationship with your parent s?]', 'Relacionamento_Pais', 'COLUMN';
+
+-- ##########################################
+
+
+/*
+
+	##### 1.0 Exploração de dados		#####
+
+*/
+
+
+-- 1.1 - Procurando inconsistências nos dados
+select 
+	Sexo,
+	count(Sexo) as contagem
+From [Stats_survey]
+group by sexo
+
+
+-- 1.2 - Validando o porque dos dados estarem vazios.
+SELECT *
+FROM [Stats_survey]
+WHERE sexo NOT IN ('Female', 'Male');
+
+DELETE FROM [Stats_survey]
+WHERE sexo NOT IN ('Female', 'Male');
+
+-- ##########################################
+
+
+/*
+
+	##### - 2.0 Limpeza e pré-processamento		#####
+
+*/
+
+-- 2.1 - Separando a coluna de Timestamp em data e hora
+
+
+select
+	Data_Registro
+from
+	[Stats_survey]
+
+-- 2.1.2 - Criando as colunas de tempo e data
+ALTER TABLE [Stats_survey]
+ADD Timestamp_Date DATE,
+    Timestamp_Time TIME;
+
+
+-- 2.1.3 - Adicionando a data da coluna Timestamp para Timestamp_Date
+UPDATE [Stats_survey]
+SET 
+    Timestamp_Date = CONVERT(DATE, SUBSTRING(Data_Registro, 1, 10))
+
+
+-- 2.1.4 - Usando CTE e convertendo o formato de hora AM/PM para 24H
+WITH coluna_hora AS (
+    SELECT
+        SUBSTRING(Data_Registro, 11, 12) AS hora,
+		Data_Registro as Horarios
+    FROM
+        [Stats_survey]
+)
+SELECT 
+    CASE 
+        WHEN RIGHT(subquery.hora, 2) = 'pm' AND LEFT(subquery.hora, 2) != '12' THEN
+            CONVERT(VARCHAR(8), DATEADD(HOUR, 12, CONVERT(DATETIME, subquery.hora)), 108)
+        WHEN RIGHT(subquery.hora, 2) = 'am' AND LEFT(subquery.hora, 2) = '12' THEN
+            '00' + SUBSTRING(subquery.hora, 3, 5)
+        ELSE
+            CONVERT(VARCHAR(8), CONVERT(DATETIME, subquery.hora), 108)
+    END AS hora_24h
+FROM
+    coluna_hora as subquery;
+
+
+-- 2.1.5 - Atualizando a coluna Timestamp_Time
+UPDATE s
+SET s.[Timestamp_Time] = 
+    CASE 
+        WHEN RIGHT(subquery.hora, 2) = 'PM' AND LEFT(subquery.hora, 2) != '12' THEN
+            CONVERT(VARCHAR(8), DATEADD(HOUR, 12, CONVERT(DATETIME, subquery.hora)), 108)
+        WHEN RIGHT(subquery.hora, 2) = 'AM' AND LEFT(subquery.hora, 2) = '12' THEN
+            '00' + SUBSTRING(subquery.hora, 3, 5)
+        ELSE
+            CONVERT(VARCHAR(8), CONVERT(DATETIME, subquery.hora), 108)
+    END
+FROM [Stats_survey] s
+CROSS APPLY (
+    SELECT SUBSTRING(s.Data_Registro, 11, 12) AS hora
+) AS subquery;
+
+
+
+-- ##########################################
+
+/*
+
+	##### - 3.0 - Transformação dos dados #####
+
+*/
+
+
+-- 3.1 - Dados faltantes em Faculdade_Categoria
+select 
+	*
+From 
+	[Stats_survey]
+where 
+	Faculdade_Categoria = ''
+
+-- 3.2 - Verificando campos vazios
+UPDATE [Stats_survey]
+SET Faculdade_Categoria = 'Economic & Management Sciences'
+WHERE Faculdade_Categoria = '';
+
+
+/*
+
+Nota: 
+
+Padronizando as colunas "Horas_Estudo_Adicionais", "Frequencia_Festa", "Consumo_Alcool", "Aulas_Faltas_Alcool".
+
+Irei padrozinar as colunas acima com a média, como os dados estão com medidas "Entre 3-5h", faz sentido adicionar a média para todos os campo.
+*/
+
+-- 3.3.1 - Verificando os dados
+select 
+	Horas_Estudo_Adicionais, count(Horas_Estudo_Adicionais) as ctg
+from 
+	[Stats_survey]
+group by
+	Horas_Estudo_Adicionais
+
+-- 3.3.2 Criando nova coluna que ira receber a média feita pela coluna de "Studying_Hour"
+ALTER TABLE [Stats_survey]
+ADD AVG_Studying_Hours float;
+
+-- 3.3.3 Adicionando os dados da média na coluna.
+UPDATE [Stats_survey]
+SET AVG_Studying_Hours = 
+    CASE 
+        WHEN Horas_Estudo_Adicionais = '0' THEN 0
+        WHEN Horas_Estudo_Adicionais = '1-3' THEN 2
+        WHEN Horas_Estudo_Adicionais = '3-5' THEN 4
+        WHEN Horas_Estudo_Adicionais = '5-8' THEN 6.5
+        WHEN Horas_Estudo_Adicionais = '8' THEN 8
+        ELSE 0
+    END;
+
+
+-- 3.3.4 Verificando a coluna Frequency_Partying
+
+select 
+	Frequencia_Festa, count(Frequencia_Festa) as ctg
+from 
+	[Stats_survey]
+ group by
+	Frequencia_Festa
+
+
+-- 3.3.5 Verificando os dados da coluna Consumo_Alcool
+
+select 
+	Consumo_Alcool, count(Consumo_Alcool) as contagem
+from [Stats_survey]
+group by
+	Consumo_Alcool
+
+
+-- 3.3.7 Criando nova coluna que ira receber a média feita pela coluna de "Consumo_Alcool"
+ALTER TABLE [Stats_survey]
+ADD AVG_Consumo_Alcool float;
+
+-- 3.3.8 Adicionando os dados na coluna
+UPDATE [Stats_survey]
+SET AVG_Consumo_Alcool = 
+    CASE 
+		WHEN Consumo_Alcool = '0' THEN 0
+        WHEN Consumo_Alcool = '1-3' THEN 2
+        WHEN Consumo_Alcool = '3-5' THEN 4
+        WHEN Consumo_Alcool = '5-8' THEN 6.5
+        ELSE '8' 
+	END;
+
+-- 3.3.9 Verificando a coluna Aulas_Faltas_Alcool.
+select 
+	Aulas_Faltas_Alcool, count(Aulas_Faltas_Alcool) as contagem
+from [Stats_survey]
+group by
+	Aulas_Faltas_Alcool
+
+/*
+
+	##### 4.0 Análise #####
+
+*/
+
+-- 02. Qual é a média atual de notas dos alunos?
+SELECT AVG(CAST(Media_Atual as Float)) AS Media_Atual_Media
+FROM Stats_survey;
+
+-- r: 77.0
+
+
+
+-- 03. Quantos alunos receberam bolsa de estudo em 2023?
+SELECT Bolsa_Estudo_2023, COUNT(Bolsa_Estudo_2023) AS Bolsa_Estudo_2023_Count
+FROM Stats_survey
+WHERE Bolsa_Estudo_2023 like 'Yes%'
+group by Bolsa_Estudo_2023
+
+-- r: 46
+
+
+
+
+
+-- 04. Qual é a média de horas adicionais de estudo por semana dos alunos?
+SELECT AVG([AVG_Studying_Hours]) AS Horas_Estudo_Adicionais_Media
+FROM Stats_survey
+
+-- r: 5h 
+
+
+
+
+
+-- 05. Qual é a porcentagem média de consumo de álcool entre os alunos?
+SELECT avg([AVG_Consumo_Alcool]) AS Consumo_Alcool_Media
+FROM Stats_survey;
+
+-- r: 4.83
+
+
+
+
+-- 06. Quantos alunos reprovaram em pelo menos um módulo até o momento?
+SELECT COUNT(*) AS Modulos_Reprovados_Count
+FROM Stats_survey
+WHERE Modulos_Reprovados > 0;
+
+-- r: 140
+              </pre>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </div>
+
+
+
+
+      <!-- <div class="container">
+        <div class="col-12 mt-3">
+          <div class="container-projetos">
+            <h4>Dashboard Alcohol_Students</h4>
+
+          </div>
+        </div>
+      </div> -->
+    </section>
+
+
+    <div class="tableau_dash">
+      <div class="container">
+        <p style="margin:20px 0px;"><a href="https://public.tableau.com/views/Alcohol_Student/Dashboard?:language=pt-BR&:sid=&:display_count=n&:origin=viz_share_link" target="_blank">Visualizar</a></p>
+      </div>
+
+
+      <div class="tableauDiv">
+
+        <div class='tableauPlaceholder' id='viz1714151984606' style='position: relative'><noscript><a href='https://public.tableau.com/views/Alcohol_Student/Dashboard?:language=pt-BR&:sid=&:display_count=n&:origin=viz_share_link'><img alt='Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Al&#47;Alcohol_Student&#47;Dashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='Alcohol_Student&#47;Dashboard' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Al&#47;Alcohol_Student&#47;Dashboard&#47;1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='pt-BR' />
+          </object></div>
+        <script type='text/javascript'>                    var divElement = document.getElementById('viz1714151984606'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '1200px'; vizElement.style.height = '1027px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '1200px'; vizElement.style.height = '1027px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '2527px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+
+
+      </div>
+
+
+    </div>
+
+
+    <footer>
+      <div class="row justify-content-around mb-0 pt-5 pb-0 ">
+        <div class=" col-11">
+          <div class="row justify-content-around">
+            <div class="col-md-3 col-12 font-italic align-items-center">
+              <h3><span style="font-size: 21px !important;
+                font-weight: bold;
+                margin-bottom: 24px !important;
+                color: #757575 !important">Redes Sociais</span></h3>
+              <div class="icons">
+                <span><a href="https://www.linkedin.com/in/leonardo-carr/" target="_blank"><i class="fa fa-linkedin-square" style="font-size:48px; color: black;"></i></a></span>
+                <span><a href="https://github.com/leonardocarr" target="_blank"><i class="fa fa-github" style="font-size:48px;margin-left: 10px;color: black;"></i></a></span>
+                <span><a href="mailto:leonardoruiz.carr@gmail.com" target="_blank"><i class="fa fa-envelope" style="font-size:48px;margin-left: 10px;color: black;"></i></a></span>
+                <span><a href="../../Arquivos/CV Leonardo Ruiz.pdf" download><i class="fa fa-address-card" style="font-size:48px;margin-left: 10px;color: black;"></i></a></span>
+              </div>
+
+            </div>
+
+
+
+            <div class="col-md-3 col-12 my-sm-0 mt-5">
+              <ul class="list-unstyled">
+                <li class=""><span>Navegação</span></li>
+                <li><a href="../../Pages/portfolio.html" class="nav-link">Portfólio</a></li>
+                <li><a href="../../Pages/sobre.html" class="nav-link">Sobre</a></li>
+                <li><a href="../../Pages/contato.html" class="nav-link">Contato</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    </div>
+  </main>
+
+
+
+  <script src="../../js/jquery-3.3.1.min.js"></script>
+  <script src="../../js/popper.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/jquery.sticky.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+
+</html>
