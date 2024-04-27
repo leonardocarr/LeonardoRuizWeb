@@ -183,7 +183,7 @@ nav.fill ul li a:after {
 }
 
 .section-header h3 {
-  padding: 0px 0px 40px 0px;
+  padding: 0px 0px 20px 0px;
   color: #393939d7;
   font-family: Outfit;
 }
@@ -191,6 +191,7 @@ nav.fill ul li a:after {
 .section-header p {
   padding: 0px 20px 40px 0px;
   color: #3c3b3b;
+  text-align: justify;
 }
 
 
